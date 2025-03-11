@@ -10,5 +10,4 @@ public interface TransactionService {
     Transaction updateTransaction(Transaction transaction);
     void deleteTransaction(Long id);
     List<Transaction> getTransactionsByPortfolio(Long portfolioId);
-    Transaction addTransactionToPortfolio(Long portfolioId, Transaction transaction);
 }

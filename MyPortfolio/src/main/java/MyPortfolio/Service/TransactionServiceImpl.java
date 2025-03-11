@@ -52,12 +52,9 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public List<Transaction> getTransactionsByPortfolio(Long portfolioId) {
-        return null;
-    }
+        Portfolio portfolio = portfolioRepository.findById(portfolioId).get();
 
-    @Override
-    public Transaction addTransactionToPortfolio(Long portfolioId, Transaction transaction) {
-        return null;
+        return portfolio.getTransactions();
     }
 
 

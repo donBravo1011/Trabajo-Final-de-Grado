@@ -1,5 +1,6 @@
 package MyPortfolio.Controller;
 
+import MyPortfolio.Entity.Portfolio;
 import MyPortfolio.Entity.Transaction;
 import MyPortfolio.Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,12 @@ public class TransactionController {
     public void delete(@PathVariable Long id){
         transactionService.deleteTransaction(id);
     }
+
+    @GetMapping("/portfolio/{portfolioId}")
+    public List<Transaction> getTransactionsByPortfolio(@PathVariable Long portfolioId) {
+        return transactionService.getTransactionsByPortfolio(portfolioId);
+    }
+
+
 
 }
