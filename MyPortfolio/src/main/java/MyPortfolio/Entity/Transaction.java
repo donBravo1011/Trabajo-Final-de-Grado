@@ -1,6 +1,9 @@
 package MyPortfolio.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,6 +13,7 @@ import java.time.LocalDate;
 @Table(name = "transactions")
 //@Getter @Setter
 //@NoArgsConstructor @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Transaction {
 
     @Id
@@ -32,9 +36,10 @@ public class Transaction {
     @Column(nullable = false)
     private LocalDate fecha; // Fecha de la transacción
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "portfolio_id", nullable = false)
+    @JsonIdentityReference(alwaysAsId = true)
     private Portfolio portfolio;
 
     public Transaction() {

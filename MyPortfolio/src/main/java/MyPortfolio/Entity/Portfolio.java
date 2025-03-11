@@ -1,5 +1,7 @@
 package MyPortfolio.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,6 +11,7 @@ import java.util.List;
 @Table(name = "portfolios")
 //@Getter @Setter
 //@NoArgsConstructor @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Portfolio {
 
     @Id

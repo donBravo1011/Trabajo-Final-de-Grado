@@ -1,6 +1,8 @@
 package MyPortfolio.Service;
 
+import MyPortfolio.Entity.Portfolio;
 import MyPortfolio.Entity.Transaction;
+import MyPortfolio.Repository.PortfolioRepository;
 import MyPortfolio.Repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,11 @@ import java.util.List;
 public class TransactionServiceImpl implements TransactionService{
 
     private final TransactionRepository transactionRepository;
+    private final PortfolioRepository portfolioRepository;
 
-    public TransactionServiceImpl(TransactionRepository transactionRepository) {
+    public TransactionServiceImpl(TransactionRepository transactionRepository, PortfolioRepository portfolioRepository) {
         this.transactionRepository = transactionRepository;
+        this.portfolioRepository = portfolioRepository;
     }
 
 
