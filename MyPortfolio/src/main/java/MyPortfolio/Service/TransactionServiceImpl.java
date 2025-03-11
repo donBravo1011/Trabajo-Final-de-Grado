@@ -23,17 +23,27 @@ public class TransactionServiceImpl implements TransactionService{
 
     @Override
     public Transaction getTransactionById(Long id) {
-        return null;
+        return transactionRepository.findById(id).get();
     }
 
     @Override
-    public Transaction updateTransaction(Long id, Transaction transaction) {
-        return null;
+    public Transaction updateTransaction(Transaction transaction) {
+
+        Transaction transactionDb = transactionRepository.findById(transaction.getId()).get();
+
+        transactionDb.setCantidad(transaction.getCantidad());
+        transactionDb.setFecha(transaction.getFecha());
+        transactionDb.setPrecio(transaction.getPrecio());
+        transactionDb.setTipo(transaction.getTipo());
+        transactionDb.setAssetId(transaction.getAssetId());
+
+
+        return transactionRepository.save(transactionDb);
     }
 
     @Override
     public void deleteTransaction(Long id) {
-
+        transactionRepository.deleteById(id);
     }
 
     @Override

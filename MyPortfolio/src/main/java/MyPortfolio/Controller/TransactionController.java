@@ -24,8 +24,18 @@ public class TransactionController {
     }
 
     @GetMapping("/{id}")
-    public List<Transaction> getTransaction(@PathVariable Long asset_id){
-        return transactionService.getTransactions(asset_id);
+    public Transaction getTransactionByid(@PathVariable Long id){
+        return transactionService.getTransactionById(id);
+    }
+
+    @PutMapping
+    public Transaction update(@RequestBody Transaction transaction){
+        return transactionService.updateTransaction(transaction);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        transactionService.deleteTransaction(id);
     }
 
 }
