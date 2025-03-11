@@ -23,8 +23,25 @@ public class PortfolioController {
         return portfolioService.register(portfolio);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public List<Portfolio> getPortfoliosByUser(@PathVariable Long id){
         return portfolioService.getPortfoliosByUser(id);
     }
+
+    @GetMapping("/{id}")
+    public Portfolio getPortfolioById(@PathVariable Long id){
+        return portfolioService.getById(id);
+    }
+
+    @PutMapping
+    public Portfolio update(@RequestBody Portfolio portfolio){
+        return portfolioService.update(portfolio);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        portfolioService.delete(id);
+    }
+
 }

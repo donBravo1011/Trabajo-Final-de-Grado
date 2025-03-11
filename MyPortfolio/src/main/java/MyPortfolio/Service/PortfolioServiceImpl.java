@@ -1,6 +1,7 @@
 package MyPortfolio.Service;
 
 import MyPortfolio.Entity.Portfolio;
+import MyPortfolio.Entity.Transaction;
 import MyPortfolio.Entity.User;
 import MyPortfolio.Repository.PortfolioRepository;
 import org.springframework.stereotype.Service;
@@ -28,16 +29,28 @@ public class PortfolioServiceImpl implements PortfolioService{
 
     @Override
     public Portfolio getById(Long id) {
-        return null;
+
+        return portfolioRepository.findById(id).get();
     }
 
     @Override
     public Portfolio update(Portfolio portfolio) {
-        return null;
+        Portfolio portfolioDb = portfolioRepository.findById(portfolio.getId()).get();
+
+        portfolioDb.setNombre(portfolio.getNombre());
+
+        for(Transaction t: portfolio.getTransactions()){
+            for(Transaction x: portfolioDb.getTransactions()){
+                if(t != x){
+                    portfolioDb.addTransactions(t);
+                }
+            }
+        }
+        return portfolioRepository.save(portfolioDb);
     }
 
     @Override
     public void delete(Long id) {
-
+        portfolioRepository.deleteById(id);
     }
 }

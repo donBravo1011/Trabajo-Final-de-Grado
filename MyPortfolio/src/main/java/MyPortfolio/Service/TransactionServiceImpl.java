@@ -22,10 +22,30 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public List<Transaction> getTransactions(Long asset_id) {
-
-        return transactionRepository.findAll();
+    public Transaction getTransactionById(Long id) {
+        return null;
     }
+
+    @Override
+    public Transaction updateTransaction(Long id, Transaction transaction) {
+        return null;
+    }
+
+    @Override
+    public void deleteTransaction(Long id) {
+
+    }
+
+    @Override
+    public List<Transaction> getTransactionsByPortfolio(Long portfolioId) {
+        return null;
+    }
+
+    @Override
+    public Transaction addTransactionToPortfolio(Long portfolioId, Transaction transaction) {
+        return null;
+    }
+
 
 //    public AssetInfo getRealTimeAssetInfo(String assetId) {
 //        String apiUrl = "https://api.marketdata.com/assets/" + assetId;

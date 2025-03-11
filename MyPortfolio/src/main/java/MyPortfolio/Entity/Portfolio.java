@@ -66,4 +66,12 @@ public class Portfolio {
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
+
+    public void addTransactions(Transaction transaction){
+        if (transaction == null) {
+            throw new IllegalArgumentException("La transacción no puede ser nula");
+        }
+        transaction.setPortfolio(this); // Mantener la relación
+        transactions.add(transaction);
+    }
 }
