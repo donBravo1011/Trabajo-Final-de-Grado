@@ -1,0 +1,24 @@
+.site-footer {
+    background-color: #1f2937;
+    /* gris oscuro azulado */
+    color: #e5e7eb;
+    /* gris claro */
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-mood {
+    font-style: italic;
+    color: #9ca3af;
+    /* tono más suave */
+}

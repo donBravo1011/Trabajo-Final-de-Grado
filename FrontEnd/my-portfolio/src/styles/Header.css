@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: center;
+    /* Centra todo inicialmente */
+    align-items: center;
+    padding: 30px;
+    background-color: #282c34;
+    position: relative;
+    /* Necesario para posicionar el icono */
+    color: white;
+}
+
+.header h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Centra el título */
+    margin: 0;
+}
+
+.profile-icon {
+    position: absolute;
+    right: 20px;
+    font-size: 24px;
+    top: 10px;
+}
+
+.profile-icon img {
+    width: 35px;
+    /* Reduce el tamaño */
+    height: 35px;
+    border-radius: 50%;
+    /* Hace que la imagen sea redonda */
+    object-fit: cover;
+    /* Evita que se deforme */
+    transition: transform 0.2s;
+}
+
+.profile-icon img:hover {
+    transform: scale(1.3);
+}
