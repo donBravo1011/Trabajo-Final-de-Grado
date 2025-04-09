@@ -1,21 +1,26 @@
-const API_LOGIN = "http://localhost:8080/sistema/api/v1/user/login?email=usuario@example.com&password=miContraseñaSegura123"
-const API_GET_USER = "http://localhost:8080/sistema/api/v1/user/1"
-
-export const getUser = async ({ email, password }) => {
-    if (email === '' || password === '') return null;
+export const getUser = async ({ email }) => {
+    if (email === '') return null;
 
     try {
-        const response = await fetch("http://localhost:8080/sistema/api/v1/user/1");
+        const response = await fetch(`http://localhost:8080/sistema/api/v1/user/email/${email}`);
 
+        // Comprobamos si la respuesta es correcta
         if (!response.ok) {
-            throw new Error("Error al obtener el usuario");
+            throw new Error(`Error al obtener el usuario: ${response.statusText}`);
         }
 
+        // Intentamos obtener el cuerpo de la respuesta
         const data = await response.json();
+
+        if (!data) {
+            throw new Error('Respuesta vacía de la API');
+        }
+
         return data;
 
     } catch (e) {
         console.error("Error en getUser:", e);
-        throw new Error('Username or password is incorrect');
+        // Proporcionamos un mensaje de error más detallado para el cliente
+        throw new Error('Error al obtener los datos del usuario');
     }
 };

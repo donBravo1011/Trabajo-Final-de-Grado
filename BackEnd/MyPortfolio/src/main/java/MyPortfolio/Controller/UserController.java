@@ -3,7 +3,10 @@ package MyPortfolio.Controller;
 import MyPortfolio.Entity.User;
 import MyPortfolio.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -42,5 +45,13 @@ public class UserController {
         userService.delete(id);
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+        User user = userService.getUserByEmail(email);
+
+
+            return ResponseEntity.ok().body(user); // Retorna el usuario si se encuentra
+
+    }
 
 }

@@ -6,22 +6,27 @@ import { Navbar } from "./components/Navbar.jsx";
 import { Header } from "./components/Header.jsx";
 import { Profile } from "./pages/Profile.jsx";
 import { Footer } from "./components/Footer.jsx";
-
-
+import { Login } from "./pages/Login.jsx";
+import { Register } from "./pages/Register.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx"; // Importar el AuthProvider
 
 function App() {
-
   return (
     <BrowserRouter>
-      <Header />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/portfolio/:id" element={<Portfolio />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-      <Footer />
+      <AuthProvider>
+        <Header />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/portfolio/:id" element={<Portfolio />} />
+          <Route path="/transaction/:id_portfolio/:id_transaction" element={<Transactions />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<div>404 Not Found</div>} />
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

@@ -1,0 +1,158 @@
+.transaction-container {
+    padding: 3rem;
+    background: linear-gradient(135deg, #ff7f50, #1e90ff);
+    /* Gradiente de fondo */
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.transaction-header {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: white;
+}
+
+.transaction-header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: bold;
+}
+
+.transaction-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    min-height: 50vh;
+    /* Esto asegura que el contenedor tenga al menos la altura completa de la pantalla */
+}
+
+
+.transaction-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #f4f4f9;
+}
+
+.transaction-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.tag {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.tag.buy {
+    background-color: #10b981;
+    /* verde */
+}
+
+.tag.sell {
+    background-color: #ef4444;
+    /* rojo */
+}
+
+.card-body p {
+    margin: 0.5rem 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.card-body strong {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.transaction-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.go-back-button {
+    background-color: #1e90ff;
+    color: white;
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.go-back-button:hover {
+    background-color: #005f9e;
+}
+
+.go-back-button:focus {
+    outline: none;
+}
+
+.other-transactions {
+    margin-top: 2rem;
+}
+
+.other-transactions h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #374151;
+}
+
+.other-transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.other-transaction-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.other-transaction-card p {
+    margin: 0.25rem 0;
+    color: #374151;
+    font-size: 0.95rem;
+}
+
+.other-transaction-card strong {
+    font-weight: 600;
+    color: #1f2937;
+}

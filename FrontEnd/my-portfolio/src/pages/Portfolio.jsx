@@ -3,6 +3,7 @@ import { getUser } from "../services/user";
 import { getPortfolioById } from "../services/single_portfolio.js";
 import "../styles/Portfolio.css";
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function getTotalPortfolio(transactions) {
@@ -22,9 +23,10 @@ export function Portfolio() {
 
     const [user, setUser] = useState(null);
     const [portfolio, setPortfolio] = useState([]);
+    const navigate = useNavigate();
     const currentPrices = {
         AAPL: 160,
-        TSL: 320,
+        TSL: 360,
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA: 180
     };
 
@@ -48,13 +50,17 @@ export function Portfolio() {
             .catch(error => {
                 console.error("Error al cargar los portfolios:", error);
             });
-    }, []);
+    }, [id]);
+    //Voy a dejar aqui la idea de poder poner otros porfolios en la misma pagina y que puedas navegar entre ellos
 
+    const handleTransactionClick = (id_transaction, id_portfolio) => {
+        navigate(`/transaction/${id_portfolio}/${id_transaction}`);
+    };
 
 
     return (
-        <div className="dashboard-container">
-            <header className="dashboard-header">
+        <div className="portfolio-container">
+            <header className="portfolio-header">
                 {user ? (
                     <h1>Hola, {user.nombre}</h1>
                 ) : (
@@ -62,9 +68,10 @@ export function Portfolio() {
                 )}
             </header>
 
-            <main className="dashboard-main">
-                <div>
-                    <h2>{portfolio.nombre}</h2>
+            <main className="portfolio-main">
+                <h2>{portfolio.nombre}</h2>
+                <div className="total-container">
+
                     <h2>
                         Total: {
                             portfolio && Array.isArray(portfolio.transactions)
@@ -72,11 +79,10 @@ export function Portfolio() {
                                 : "Cargando..."
                         }
                     </h2>
-
                 </div>
 
-                <div className="portfolios-container">
-                    <div className="portfolios-list">
+                <div className="portfolio-portfolios-container">
+                    <div className="portfolio-portfolios-list">
                         {
                             portfolio && Array.isArray(portfolio.transactions) ? (
                                 portfolio.transactions.map((transaction, index) => {
@@ -86,19 +92,19 @@ export function Portfolio() {
                                     const icon = isBuy ? "🟢" : "🔴";
 
                                     return (
-                                        <div key={index} className="portfolio-card">
-                                            <div className="card-header">
+                                        <div key={index} className="portfolio-card" onClick={() => handleTransactionClick(transaction.id, portfolio.id)}>
+                                            <div className="portfolio-card-header">
                                                 <h3>{icon} {transaction.assetId}</h3>
-                                                <span className={`tag ${isBuy ? "buy" : "sell"}`}>
+                                                <span className={`portfolio-tag ${isBuy ? "buy" : "sell"}`}>
                                                     {transaction.tipo}
                                                 </span>
                                             </div>
-                                            <div className="card-body">
+                                            <div className="portfolio-card-body">
                                                 <p><strong>Cantidad:</strong> {transaction.cantidad}</p>
                                                 <p><strong>Precio:</strong> ${transaction.precio}</p>
                                                 <p><strong>Fecha:</strong> {transaction.fecha}</p>
                                                 {currentPrice && (
-                                                    <p className={diff >= 0 ? "profit" : "loss"}>
+                                                    <p className={diff >= 0 ? "portfolio-profit" : "portfolio-loss"}>
                                                         <strong>{diff >= 0 ? "Ganancia estimada:" : "Pérdida estimada:"}</strong> ${diff.toFixed(2)}
                                                     </p>
                                                 )}
@@ -114,5 +120,6 @@ export function Portfolio() {
                 </div>
             </main>
         </div>
+
     );
 }
