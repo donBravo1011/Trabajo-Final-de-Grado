@@ -53,4 +53,9 @@ public class PortfolioServiceImpl implements PortfolioService{
     public void delete(Long id) {
         portfolioRepository.deleteById(id);
     }
+
+    @Override
+    public List<Portfolio> findByUserEmail(String email){
+        return portfolioRepository.findByUserEmail(email);
+    }
 }

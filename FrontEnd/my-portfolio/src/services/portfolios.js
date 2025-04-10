@@ -1,8 +1,8 @@
-const API = "http://localhost:8080/sistema/api/v1/portfolio/user/1"
+const API = "http://localhost:8080/sistema/api/v1/portfolio/email/usuario@example.com"
 
-export const getPortfolios = async () => {
+export const getPortfolios = async ({ email }) => {
     try {
-        const response = await fetch(API);
+        const response = await fetch(`http://localhost:8080/sistema/api/v1/portfolio/email/${email}`);
 
         if (!response.ok) {
             throw new Error("Error al obtener los portfolios");

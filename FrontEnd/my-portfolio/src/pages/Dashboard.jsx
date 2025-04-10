@@ -25,12 +25,10 @@ export function Dashboard() {
     const [ocultar, setOcultar] = useState(false);
     const navigate = useNavigate();
     const { userEmail } = useAuth();
-    console.log("userEmail", userEmail)
-
 
     useEffect(() => {
         if (userEmail) {
-            getUser(userEmail)
+            getUser({ email: userEmail })
                 .then(data => {
                     setUser(data);
 
@@ -38,16 +36,17 @@ export function Dashboard() {
                 .catch(error => {
                     console.error("Error al cargar el usuario:", error);
                 });
+
+
+            getPortfolios({ email: userEmail })
+                .then(data => {
+                    setPortfolios(data);
+
+                })
+                .catch(error => {
+                    console.error("Error al cargar los portfolios:", error);
+                });
         }
-
-        getPortfolios()
-            .then(data => {
-                setPortfolios(data);
-
-            })
-            .catch(error => {
-                console.error("Error al cargar los portfolios:", error);
-            });
     }, [userEmail]);
 
     const handleOcultar = () => {

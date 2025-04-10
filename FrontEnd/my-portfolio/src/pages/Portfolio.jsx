@@ -4,6 +4,7 @@ import { getPortfolioById } from "../services/single_portfolio.js";
 import "../styles/Portfolio.css";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext";
 
 
 function getTotalPortfolio(transactions) {
@@ -24,6 +25,7 @@ export function Portfolio() {
     const [user, setUser] = useState(null);
     const [portfolio, setPortfolio] = useState([]);
     const navigate = useNavigate();
+    const { userEmail } = useAuth();
     const currentPrices = {
         AAPL: 160,
         TSL: 360,
@@ -33,24 +35,25 @@ export function Portfolio() {
 
 
     useEffect(() => {
-        getUser({ email: "miguel", password: "123456" })
-            .then(data => {
-                setUser(data);
-                console.log(data);
-            })
-            .catch(error => {
-                console.error("Error al cargar el usuario:", error);
-            });
+        if (userEmail) {
+            getUser({ email: userEmail })
+                .then(data => {
+                    setUser(data);
+
+                })
+                .catch(error => {
+                    console.error("Error al cargar el usuario:", error);
+                });
+        }
 
         getPortfolioById(id)
             .then(data => {
                 setPortfolio(data);
-                console.log("Portfolio:", data);
             })
             .catch(error => {
                 console.error("Error al cargar los portfolios:", error);
             });
-    }, [id]);
+    }, [id, userEmail]);
     //Voy a dejar aqui la idea de poder poner otros porfolios en la misma pagina y que puedas navegar entre ellos
 
     const handleTransactionClick = (id_transaction, id_portfolio) => {

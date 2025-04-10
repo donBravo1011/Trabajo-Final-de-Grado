@@ -28,7 +28,7 @@ export function Login() {
             login(email);
             navigate(`/`);
         } else {
-            console.log('Credenciales incorrectas o error');
+            alert("Credenciales incorrectas.");
         }
 
     }

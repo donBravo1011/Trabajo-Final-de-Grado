@@ -12,4 +12,6 @@ public interface PortfolioService {
     public Portfolio update(Portfolio portfolio);
     public void delete(Long id);
 
+    public List<Portfolio> findByUserEmail(String email);
+
 }

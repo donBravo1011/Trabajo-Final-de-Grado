@@ -15,7 +15,6 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Header />
-        <Navbar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/portfolio/:id" element={<Portfolio />} />

@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface PortfolioRepository extends JpaRepository<Portfolio,Long> {
     List<Portfolio> findByUserId(Long id);
+    List<Portfolio> findByUserEmail(String email);
 }

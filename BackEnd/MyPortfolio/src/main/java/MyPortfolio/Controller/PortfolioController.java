@@ -1,8 +1,10 @@
 package MyPortfolio.Controller;
 
 import MyPortfolio.Entity.Portfolio;
+import MyPortfolio.Entity.User;
 import MyPortfolio.Service.PortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +44,11 @@ public class PortfolioController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         portfolioService.delete(id);
+    }
+
+    @GetMapping("/email/{email}")
+    public List<Portfolio> getPortfolioByEmail(@PathVariable String email) {
+        return portfolioService.findByUserEmail(email);
     }
 
 }

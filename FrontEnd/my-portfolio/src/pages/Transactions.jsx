@@ -5,31 +5,33 @@ import { getTransactionById } from '../services/transaction';
 import { getPortfolioById } from "../services/single_portfolio.js";
 import "../styles/Transactions.css";
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext";
 
 export function Transactions() {
     const { id_portfolio, id_transaction } = useParams();
     const [user, setUser] = useState(null);
     const [portfolio, setPortfolio] = useState(null);
     const [transaction, setTransaction] = useState(null);
+    const { userEmail } = useAuth();
     const navigate = useNavigate();
     const handleDashboardClick = () => {
         navigate(`/`);
     };
 
     useEffect(() => {
-        getUser({ email: "miguel", password: "123456" })
-            .then(data => {
-                setUser(data);
-                console.log(data);
-            })
-            .catch(error => {
-                console.error("Error al cargar el usuario:", error);
-            });
+        if (userEmail) {
+            getUser({ email: userEmail })
+                .then(data => {
+                    setUser(data);
+                })
+                .catch(error => {
+                    console.error("Error al cargar el usuario:", error);
+                });
+        }
 
         getTransactionById(id_transaction)
             .then(data => {
                 setTransaction(data);
-                console.log("transaction:", data);
             })
             .catch(error => {
                 console.error("Error al cargar la transacción:", error);
@@ -38,12 +40,11 @@ export function Transactions() {
         getPortfolioById(id_portfolio)
             .then(data => {
                 setPortfolio(data);
-                console.log("Portfolio:", data);
             })
             .catch(error => {
                 console.error("Error al cargar el portfolio:", error);
             });
-    }, [id_transaction, id_portfolio]);
+    }, [id_transaction, id_portfolio, userEmail]);
 
     const getOtherTransactions = () => {
         if (portfolio && portfolio.transactions) {
