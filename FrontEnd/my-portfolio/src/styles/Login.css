@@ -1,4 +1,11 @@
-/* From Uiverse.io by Praashoo7 */
+.page {
+    padding: 2rem;
+    background: linear-gradient(135deg, #ff7f50, #1e90ff);
+    min-height: 30vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
 .form {
     display: flex;
     flex-direction: column;

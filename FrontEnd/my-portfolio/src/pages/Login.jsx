@@ -34,7 +34,7 @@ export function Login() {
     }
 
     return (
-        <div>
+        <div className="page">
             <form className="form" id="myForm" onSubmit={handelLogin}>
                 <p id="heading">Login</p>
                 <div className="field">

@@ -8,13 +8,13 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userEmail, setUserEmail] = useState(null); // Aquí guardamos el email del usuario
+    const [userId, setUserId] = useState(null); // Aquí guardamos el ID del usuario
     const navigate = useNavigate();
 
     // Método para iniciar sesión
     const login = (email) => {
         setIsAuthenticated(true);
         setUserEmail(email); // Guardamos el email del usuario
-        console.log("hola", userEmail)
         // Puedes guardar en localStorage si deseas persistencia entre sesiones
         localStorage.setItem('userEmail', email);
     };
@@ -27,6 +27,10 @@ export const AuthProvider = ({ children }) => {
         navigate('/login'); // Redirigimos al login
     };
 
+    function handleUserId(id) {
+        setUserId(id); // Guardamos el ID del usuario
+    }
+
     // Efecto para verificar si el usuario está autenticado cuando recarga la página
     useEffect(() => {
         const savedEmail = localStorage.getItem('userEmail');
@@ -37,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, userEmail, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, userEmail, login, logout, handleUserId, userId }}>
             {children}
         </AuthContext.Provider>
     );

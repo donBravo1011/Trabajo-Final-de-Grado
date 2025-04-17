@@ -122,3 +122,43 @@
     justify-content: center;
     font-size: 1.2rem;
 }
+
+.portfolio-actions {
+    display: flex;
+    justify-content: space-between;
+    /* Alinea los elementos a los extremos */
+    align-items: center;
+    /* Alinea verticalmente */
+    padding: 10px 0;
+}
+
+.portfolio-actions h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #111827;
+}
+
+.icons-container {
+    display: flex;
+    /* Coloca los íconos en una fila */
+    gap: 10px;
+    /* Espacio entre los íconos */
+}
+
+.dashboard-icon {
+    width: 40px;
+    /* Ajusta el tamaño de los íconos */
+    height: 40px;
+    /* Ajusta el tamaño de los íconos */
+    cursor: pointer;
+    color: #4b5563;
+    transition: color 0.2s ease;
+}
+
+.dashboard-icon:hover {
+    color: #1e90ff;
+}
+
+.delete-icon:hover {
+    color: #ef4444;
+}

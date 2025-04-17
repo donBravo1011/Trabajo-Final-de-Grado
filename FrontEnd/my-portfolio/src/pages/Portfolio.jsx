@@ -5,6 +5,7 @@ import "../styles/Portfolio.css";
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../context/AuthContext";
+import { eliminarPortfolio } from "../services/elimarPortfolio.js";
 
 
 function getTotalPortfolio(transactions) {
@@ -60,6 +61,27 @@ export function Portfolio() {
         navigate(`/transaction/${id_portfolio}/${id_transaction}`);
     };
 
+    const handleEdit = (portfolioId) => {
+        navigate(`/editPortfolio/${portfolioId}`);
+    }
+
+    const handleDelete = async (id) => {
+        const isConfirmed = window.confirm("¿Estás seguro de que deseas eliminar este portfolio?");
+
+        if (isConfirmed) {
+            const success = await eliminarPortfolio(id);
+            if (success) {
+                console.log('Portfolio eliminado exitosamente');
+                navigate('/');
+            } else {
+                console.log('Error al eliminar el portfolio');
+            }
+        } else {
+            console.log('Eliminación cancelada');
+        }
+    };
+
+
 
     return (
         <div className="portfolio-container">
@@ -72,7 +94,43 @@ export function Portfolio() {
             </header>
 
             <main className="portfolio-main">
-                <h2>{portfolio.nombre}</h2>
+
+                <div className="portfolio-actions">
+                    <h2>{portfolio.nombre}</h2>
+                    <div className="icons-container">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            className="dashboard-icon edit-icon"
+                            onClick={() => handleEdit(portfolio.id)}
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M16 4l4 4m0 0l-8 8H4v-4l8-8m4 4l4 4"
+                            />
+                        </svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            className="dashboard-icon delete-icon"
+                            onClick={() => handleDelete(portfolio.id)}
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </div>
+                </div>
+
                 <div className="total-container">
 
                     <h2>

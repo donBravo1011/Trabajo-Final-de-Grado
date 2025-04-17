@@ -24,20 +24,18 @@ export function Dashboard() {
     const [portfolios, setPortfolios] = useState([]);
     const [ocultar, setOcultar] = useState(false);
     const navigate = useNavigate();
-    const { userEmail } = useAuth();
+    const { userEmail, handleUserId } = useAuth();
 
     useEffect(() => {
         if (userEmail) {
             getUser({ email: userEmail })
                 .then(data => {
                     setUser(data);
-
+                    handleUserId(data.id);
                 })
                 .catch(error => {
                     console.error("Error al cargar el usuario:", error);
                 });
-
-
             getPortfolios({ email: userEmail })
                 .then(data => {
                     setPortfolios(data);
@@ -56,6 +54,7 @@ export function Dashboard() {
     const handlePortfolioClick = (id) => {
         navigate(`/portfolio/${id}`);
     };
+
 
     return (
         <div className="dashboard-container">
@@ -88,6 +87,9 @@ export function Dashboard() {
                                         <strong>Total: {ocultar ? "*****" : getTotalPortfolio(portfolio.transactions)} $</strong>
                                     </div>
                                 ))}
+                                <div className="dashboard-portfolio-new" onClick={() => navigate("/newPortfolio")}>
+                                    <h3>Crear nuevo portafolio</h3>
+                                </div>
                             </div>
                         ) : (
                             <p>No hay portfolios disponibles.</p>

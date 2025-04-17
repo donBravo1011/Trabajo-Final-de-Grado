@@ -51,4 +51,12 @@ public class PortfolioController {
         return portfolioService.findByUserEmail(email);
     }
 
+    @PatchMapping("/{id}")
+    public Portfolio updateName( @PathVariable Long id,@RequestBody String name) {
+        return portfolioService.updateName(id, name);
+
+    }
+
+
+
 }

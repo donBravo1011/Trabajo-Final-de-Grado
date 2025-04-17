@@ -8,7 +8,9 @@ import { Profile } from "./pages/Profile.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { Login } from "./pages/Login.jsx";
 import { Register } from "./pages/Register.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx"; // Importar el AuthProvider
+import { NewPortfolio } from "./pages/NewPortfolio.jsx";
+import { EditPortfolio } from "./pages/EditPortfolio.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/newPortfolio" element={<NewPortfolio />} />
+          <Route path="/editPortfolio/:portfolioId" element={<EditPortfolio />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
         <Footer />

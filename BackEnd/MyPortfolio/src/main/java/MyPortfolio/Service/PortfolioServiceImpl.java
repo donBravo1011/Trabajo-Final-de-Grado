@@ -58,4 +58,14 @@ public class PortfolioServiceImpl implements PortfolioService{
     public List<Portfolio> findByUserEmail(String email){
         return portfolioRepository.findByUserEmail(email);
     }
+
+    @Override
+    public Portfolio updateName(Long id,String name){
+        Portfolio portfolioDb = portfolioRepository.findById(id).get();
+
+        portfolioDb.setNombre(name);
+
+
+        return portfolioRepository.save(portfolioDb);
+    }
 }
