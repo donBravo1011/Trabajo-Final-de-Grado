@@ -141,12 +141,20 @@ export function Portfolio() {
                         }
                     </h2>
                 </div>
+                <aside className="dashboard-sidebar">
+                    <h2>¿Qué quieres hacer?</h2>
+                    <div className="dashboard-sidebar-buttons">
+                        <button onClick={() => navigate("/comprarVender")} >
+                            <span className="dashboard-button_top"> Comprar/Vender activos </span>
+                        </button>
+                    </div>
+                </aside>
 
                 <div className="portfolio-portfolios-container">
                     <div className="portfolio-portfolios-list">
                         {
                             portfolio && Array.isArray(portfolio.transactions) ? (
-                                portfolio.transactions.map((transaction, index) => {
+                                [...portfolio.transactions].reverse().map((transaction, index) => {
                                     const currentPrice = currentPrices[transaction.assetId];
                                     const isBuy = transaction.tipo === "COMPRA";
                                     const diff = currentPrice ? (currentPrice - transaction.precio) * transaction.cantidad : null;

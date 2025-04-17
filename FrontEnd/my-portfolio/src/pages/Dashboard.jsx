@@ -95,23 +95,7 @@ export function Dashboard() {
                             <p>No hay portfolios disponibles.</p>
                         )}
                     </div>
-                    <aside className="dashboard-sidebar">
-                        <h2>¿Qué quieres hacer?</h2>
-                        <div className="dashboard-sidebar-buttons">
-                            <button>
-                                <span className="dashboard-button_top"> Buscar nuevos activos </span>
-                            </button>
-                            <button>
-                                <span className="dashboard-button_top"> Comprar activos </span>
-                            </button>
-                            <button>
-                                <span className="dashboard-button_top"> Vender tus activos </span>
-                            </button>
-                            <button>
-                                <span className="dashboard-button_top"> Traspasar activos </span>
-                            </button>
-                        </div>
-                    </aside>
+
                 </div>
             </main>
         </div>

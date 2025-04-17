@@ -11,6 +11,7 @@ import { Register } from "./pages/Register.jsx";
 import { NewPortfolio } from "./pages/NewPortfolio.jsx";
 import { EditPortfolio } from "./pages/EditPortfolio.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
+import { ComprarVender } from "./pages/ComprarVender.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/newPortfolio" element={<NewPortfolio />} />
           <Route path="/editPortfolio/:portfolioId" element={<EditPortfolio />} />
+          <Route path="/comprarVender" element={<ComprarVender />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
         <Footer />
