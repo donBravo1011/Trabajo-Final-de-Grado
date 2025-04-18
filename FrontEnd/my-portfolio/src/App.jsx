@@ -12,6 +12,7 @@ import { NewPortfolio } from "./pages/NewPortfolio.jsx";
 import { EditPortfolio } from "./pages/EditPortfolio.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { ComprarVender } from "./pages/ComprarVender.jsx";
+import { Buscador } from "./pages/Buscador.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/newPortfolio" element={<NewPortfolio />} />
           <Route path="/editPortfolio/:portfolioId" element={<EditPortfolio />} />
           <Route path="/comprarVender/:id" element={<ComprarVender />} />
+          <Route path="/buscador" element={<Buscador />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
         <Footer />

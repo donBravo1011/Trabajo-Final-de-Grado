@@ -55,6 +55,9 @@ export function Dashboard() {
         navigate(`/portfolio/${id}`);
     };
 
+    const handleBuscador = () => {
+        navigate("/buscador");
+    }
 
     return (
         <div className="dashboard-container">
@@ -98,7 +101,7 @@ export function Dashboard() {
                     <aside className="dashboard-sidebar">
                         <h2>¿Qué quieres hacer?</h2>
                         <div className="dashboard-sidebar-buttons">
-                            <button  >
+                            <button onClick={handleBuscador}>
                                 <span className="dashboard-button_top"> Buscador de activos </span>
                             </button>
                         </div>
