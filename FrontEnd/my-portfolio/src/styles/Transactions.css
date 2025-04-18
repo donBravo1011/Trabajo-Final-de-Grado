@@ -156,3 +156,14 @@
     font-weight: 600;
     color: #1f2937;
 }
+
+.card-body {
+    position: relative;
+
+}
+
+.card-body .delete-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

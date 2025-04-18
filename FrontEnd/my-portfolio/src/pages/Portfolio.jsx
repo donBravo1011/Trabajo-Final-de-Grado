@@ -27,11 +27,6 @@ export function Portfolio() {
     const [portfolio, setPortfolio] = useState([]);
     const navigate = useNavigate();
     const { userEmail } = useAuth();
-    const currentPrices = {
-        AAPL: 160,
-        TSL: 360,
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA: 180
-    };
 
 
 
@@ -80,6 +75,11 @@ export function Portfolio() {
             console.log('Eliminación cancelada');
         }
     };
+
+    const handelComprarVender = () => {
+        navigate(`/comprarVender/${portfolio.id}`);
+    }
+
 
 
 
@@ -144,7 +144,7 @@ export function Portfolio() {
                 <aside className="dashboard-sidebar">
                     <h2>¿Qué quieres hacer?</h2>
                     <div className="dashboard-sidebar-buttons">
-                        <button onClick={() => navigate("/comprarVender")} >
+                        <button onClick={handelComprarVender} >
                             <span className="dashboard-button_top"> Comprar/Vender activos </span>
                         </button>
                     </div>
@@ -155,11 +155,8 @@ export function Portfolio() {
                         {
                             portfolio && Array.isArray(portfolio.transactions) ? (
                                 [...portfolio.transactions].reverse().map((transaction, index) => {
-                                    const currentPrice = currentPrices[transaction.assetId];
                                     const isBuy = transaction.tipo === "COMPRA";
-                                    const diff = currentPrice ? (currentPrice - transaction.precio) * transaction.cantidad : null;
                                     const icon = isBuy ? "🟢" : "🔴";
-
                                     return (
                                         <div key={index} className="portfolio-card" onClick={() => handleTransactionClick(transaction.id, portfolio.id)}>
                                             <div className="portfolio-card-header">
@@ -172,11 +169,7 @@ export function Portfolio() {
                                                 <p><strong>Cantidad:</strong> {transaction.cantidad}</p>
                                                 <p><strong>Precio:</strong> ${transaction.precio}</p>
                                                 <p><strong>Fecha:</strong> {transaction.fecha}</p>
-                                                {currentPrice && (
-                                                    <p className={diff >= 0 ? "portfolio-profit" : "portfolio-loss"}>
-                                                        <strong>{diff >= 0 ? "Ganancia estimada:" : "Pérdida estimada:"}</strong> ${diff.toFixed(2)}
-                                                    </p>
-                                                )}
+
                                             </div>
                                         </div>
                                     );

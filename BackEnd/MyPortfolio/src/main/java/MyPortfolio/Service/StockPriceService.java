@@ -48,7 +48,7 @@ public class StockPriceService {
             // Obtener el precio de cierre más reciente
             String latestClosePrice = latestData.path("4. close").asText();
 
-            return "El precio actual de la acción " + symbol + " es: $" + latestClosePrice;
+            return latestClosePrice;
         } catch (HttpClientErrorException e) {
             // Maneja el error aquí (si es necesario)
             return "Error al obtener los datos: " + e.getMessage();
@@ -80,7 +80,7 @@ public class StockPriceService {
             // Obtener el precio de cambio (precio actual de la criptomoneda)
             String exchangeRate = exchangeRateNode.path("5. Exchange Rate").asText();
 
-            return "El precio actual de " + fromCurrency + " en " + toCurrency + " es: " + exchangeRate;
+            return exchangeRate;
         } catch (HttpClientErrorException e) {
             // Maneja el error aquí (si es necesario)
             return "Error al obtener los datos: " + e.getMessage();
@@ -119,7 +119,7 @@ public class StockPriceService {
             // Obtener el precio de cierre más reciente
             String latestClosePrice = latestData.path("4. close").asText();
 
-            return "El precio actual del ETF " + symbol + " es: $" + latestClosePrice;
+            return latestClosePrice;
         } catch (HttpClientErrorException e) {
             // Maneja el error aquí (si es necesario)
             return "Error al obtener los datos: " + e.getMessage();

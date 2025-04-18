@@ -45,7 +45,7 @@ export function Dashboard() {
                     console.error("Error al cargar los portfolios:", error);
                 });
         }
-    }, [userEmail]);
+    }, [userEmail, handleUserId]);
 
     const handleOcultar = () => {
         setOcultar(!ocultar);
@@ -95,6 +95,14 @@ export function Dashboard() {
                             <p>No hay portfolios disponibles.</p>
                         )}
                     </div>
+                    <aside className="dashboard-sidebar">
+                        <h2>¿Qué quieres hacer?</h2>
+                        <div className="dashboard-sidebar-buttons">
+                            <button  >
+                                <span className="dashboard-button_top"> Buscador de activos </span>
+                            </button>
+                        </div>
+                    </aside>
 
                 </div>
             </main>

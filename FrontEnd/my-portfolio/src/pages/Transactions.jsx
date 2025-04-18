@@ -6,6 +6,7 @@ import { getPortfolioById } from "../services/single_portfolio.js";
 import "../styles/Transactions.css";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../context/AuthContext";
+import { eliminarTransaction } from '../services/eliminarTransaction.js';
 
 export function Transactions() {
     const { id_portfolio, id_transaction } = useParams();
@@ -58,6 +59,23 @@ export function Transactions() {
         navigate(`/transaction/${id_portfolio}/${id_transaction}`);
     };
 
+    const handelTransactionDelete = (transactionId) => {
+        const isConfirmed = window.confirm("¿Estás seguro de que deseas eliminar esta transacción?");
+
+        if (isConfirmed) {
+            // Aquí puedes agregar la lógica
+
+            const success = eliminarTransaction(transactionId);
+            if (success) {
+                // refrescar lista, mostrar alerta, etc.
+                navigate(`/portfolio/${portfolio.id}`);
+            } else {
+                alert("Error al eliminar la transacción.");
+            }
+
+        }
+    }
+
     return (
         <div className="transaction-container">
             <header className="transaction-header">
@@ -83,6 +101,23 @@ export function Transactions() {
                             <p><strong>Cantidad:</strong> {transaction.cantidad}</p>
                             <p><strong>Precio:</strong> ${transaction.precio}</p>
                             <p><strong>Fecha:</strong> {transaction.fecha}</p>
+                            <div className="delete-container">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    className="dashboard-icon delete-icon"
+                                    onClick={() => handelTransactionDelete(transaction.id)}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                         <div className="transaction-footer">
                             <button className="go-back-button" onClick={() => handleDashboardClick()}>Volver a los Portfolios</button>

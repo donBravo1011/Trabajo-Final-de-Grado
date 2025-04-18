@@ -27,7 +27,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/newPortfolio" element={<NewPortfolio />} />
           <Route path="/editPortfolio/:portfolioId" element={<EditPortfolio />} />
-          <Route path="/comprarVender" element={<ComprarVender />} />
+          <Route path="/comprarVender/:id" element={<ComprarVender />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
         <Footer />
