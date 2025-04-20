@@ -59,6 +59,10 @@ export function Dashboard() {
         navigate("/buscador");
     }
 
+    const handleModelo = () => {
+        navigate("/modelo");
+    }
+
     return (
         <div className="dashboard-container">
             <header className="dashboard-header">
@@ -103,6 +107,9 @@ export function Dashboard() {
                         <div className="dashboard-sidebar-buttons">
                             <button onClick={handleBuscador}>
                                 <span className="dashboard-button_top"> Buscador de activos </span>
+                            </button>
+                            <button onClick={handleModelo}>
+                                <span className="dashboard-button_top"> Modelo de lenguaje </span>
                             </button>
                         </div>
                     </aside>

@@ -2,6 +2,7 @@ import { buscarActivoPorCategoria } from "../services/buscar";
 import { useParams } from 'react-router-dom';
 import { comprarVender } from "../services/comprarVender";
 import { useNavigate } from 'react-router-dom';
+import "../styles/ComprarVender.css";
 
 export function ComprarVender() {
 
@@ -62,28 +63,32 @@ export function ComprarVender() {
 
 
     return (
-        <div className="buscador-container">
-            <h2>Comprar/Vender activos</h2>
-            <form action="" onSubmit={handelSubmit}>
-                <div className="input-group">
-                    <input type="text" name="activo" placeholder="Comprar/Vender activos..." required />
-                    <select name="categoria" className="categoria-select">
-                        <option value="stock">Stock</option>
-                        <option value="crypto">Crypto</option>
-                        <option value="etf">ETF</option>
-                    </select>
-                </div>
-                <div>
-                    <input type="text" name="cantidad" placeholder="Cantidad" required />
-                    <select name="compra/venta" id="compra/venta">
-                        <option value="comprar">Comprar</option>
-                        <option value="vender">Vender</option>
-                    </select>
-                </div>
-                <button className="dashboard-button_top">
-                    <span>Comprar/Vender</span>
-                </button>
-            </form>
+        <div className="comprar-vender-container">
+            <div className="buscador-container">
+                <h2>Comprar/Vender activos</h2>
+                <form action="" onSubmit={handelSubmit}>
+                    <div className="input-group">
+                        <input type="text" name="activo" placeholder="Comprar/Vender activos..." required />
+                        <select name="categoria" className="categoria-select">
+                            <option value="stock">Stock</option>
+                            <option value="crypto">Crypto</option>
+                            <option value="etf">ETF</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="cantidad" placeholder="Cantidad" required />
+                        <select name="compra/venta" id="compra/venta">
+                            <option value="comprar">Comprar</option>
+                            <option value="vender">Vender</option>
+                        </select>
+                    </div>
+                    <div className="comprar-vender-button-container">
+                        <button className="dashboard-button_top">
+                            <span>Comprar/Vender</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
 
     );
