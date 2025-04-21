@@ -66,7 +66,7 @@ export function Register() {
                 </div>
                 <div className="btn">
                     <button className="button1" onClick={handleLogin}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                    <button className="button2" >Sign Up</button>
+                    <button className="button2" >Register</button>
                 </div>
             </form>
         </div>

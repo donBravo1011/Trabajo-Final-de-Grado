@@ -51,7 +51,7 @@ export function Login() {
                 </div>
                 <div className="btn">
                     <button className="button1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                    <button className="button2" onClick={handelSingUp}>Sign Up</button>
+                    <button className="button2" onClick={handelSingUp}>Register</button>
                 </div>
             </form>
         </div>

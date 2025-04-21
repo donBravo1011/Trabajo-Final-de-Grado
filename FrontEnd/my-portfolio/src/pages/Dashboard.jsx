@@ -86,7 +86,7 @@ export function Dashboard() {
                 <h2>Mis Portafolios</h2>
                 <div className="dashboard-portfolios-container">
                     <div className="dashboard-portfolios-list">
-                        {portfolios.length > 0 ? (
+                        {portfolios.length >= 0 ? (
                             <div className="dashboard-portfolios-grid">
                                 {portfolios.map(portfolio => (
                                     <div className="dashboard-portfolio-card" key={portfolio.id} onClick={() => handlePortfolioClick(portfolio.id)}>
