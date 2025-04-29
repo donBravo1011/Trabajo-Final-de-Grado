@@ -14,6 +14,8 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import { ComprarVender } from "./pages/ComprarVender.jsx";
 import { Buscador } from "./pages/Buscador.jsx";
 import { Modelo } from "./pages/Modelo.jsx";
+import { EditarPerfil } from "./pages/EditarPerfil.jsx";
+import { CambiarContrasena } from "./pages/CambiarContrasena.jsx";
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
           <Route path="/comprarVender/:id" element={<ComprarVender />} />
           <Route path="/buscador" element={<Buscador />} />
           <Route path="/modelo" element={<Modelo />} />
+          <Route path="/editarPerfil" element={<EditarPerfil />} />
+          <Route path="/cambiarContrasena" element={<CambiarContrasena />} />
           <Route path="*" element={<div>404 Not Found</div>} />
         </Routes>
         <Footer />

@@ -54,4 +54,14 @@ public class UserController {
 
     }
 
+    @PatchMapping("/updateName/{id}")
+    public User updateName(@RequestBody String name,@PathVariable Long id){
+        return userService.updateName(name,id);
+    }
+
+    @PatchMapping("/updatePassword/{id}")
+    public User updatePassword(@RequestBody String pw,@PathVariable Long id){
+        return userService.updatePassword(pw,id);
+    }
+
 }

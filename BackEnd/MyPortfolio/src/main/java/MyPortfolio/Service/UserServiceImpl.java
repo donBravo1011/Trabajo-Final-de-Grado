@@ -58,4 +58,18 @@ public class UserServiceImpl implements UserService{
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    @Override
+    public User updateName(String name, Long id){
+        User userDb = userRepository.findById(id).get();
+        userDb.setNombre(name);
+        return userRepository.save(userDb);
+    }
+
+    @Override
+    public User updatePassword(String pw, Long id){
+        User userDb = userRepository.findById(id).get();
+        userDb.setPassword(pw);
+        return userRepository.save(userDb);
+    }
 }
