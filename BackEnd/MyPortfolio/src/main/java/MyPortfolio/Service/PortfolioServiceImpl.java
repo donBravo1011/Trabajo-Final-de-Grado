@@ -2,14 +2,14 @@ package MyPortfolio.Service;
 
 import MyPortfolio.Entity.Portfolio;
 import MyPortfolio.Entity.Transaction;
-import MyPortfolio.Entity.User;
 import MyPortfolio.Repository.PortfolioRepository;
+import MyPortfolio.Service.Impl.PortfolioService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PortfolioServiceImpl implements PortfolioService{
+public class PortfolioServiceImpl implements PortfolioService {
 
     private final PortfolioRepository portfolioRepository;
 

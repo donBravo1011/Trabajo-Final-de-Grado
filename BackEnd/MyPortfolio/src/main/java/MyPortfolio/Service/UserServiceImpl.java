@@ -2,14 +2,14 @@ package MyPortfolio.Service;
 
 import MyPortfolio.Entity.User;
 import MyPortfolio.Repository.UserRepository;
+import MyPortfolio.Service.Impl.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
