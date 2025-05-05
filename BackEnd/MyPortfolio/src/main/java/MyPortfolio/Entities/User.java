@@ -1,8 +1,8 @@
-package MyPortfolio.Entity;
+package MyPortfolio.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+
 
 import java.util.List;
 

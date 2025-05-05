@@ -1,7 +1,6 @@
-package MyPortfolio.Repository;
+package MyPortfolio.Repositories;
 
-import MyPortfolio.Entity.Portfolio;
-import MyPortfolio.Entity.User;
+import MyPortfolio.Entities.Portfolio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

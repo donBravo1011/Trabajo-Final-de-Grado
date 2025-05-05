@@ -1,7 +1,7 @@
-package MyPortfolio.Controller;
+package MyPortfolio.Controllers;
 
-import MyPortfolio.Entity.Portfolio;
-import MyPortfolio.Service.Impl.PortfolioService;
+import MyPortfolio.Entities.Portfolio;
+import MyPortfolio.Services.Impl.PortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

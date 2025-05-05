@@ -1,4 +1,4 @@
-package MyPortfolio.Service;
+package MyPortfolio.Services;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

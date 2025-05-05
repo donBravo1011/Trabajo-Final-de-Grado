@@ -1,6 +1,6 @@
-package MyPortfolio.Repository;
+package MyPortfolio.Repositories;
 
-import MyPortfolio.Entity.Transaction;
+import MyPortfolio.Entities.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

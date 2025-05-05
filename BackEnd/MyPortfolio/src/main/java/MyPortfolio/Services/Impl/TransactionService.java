@@ -1,6 +1,6 @@
-package MyPortfolio.Service.Impl;
+package MyPortfolio.Services.Impl;
 
-import MyPortfolio.Entity.Transaction;
+import MyPortfolio.Entities.Transaction;
 
 import java.util.List;
 

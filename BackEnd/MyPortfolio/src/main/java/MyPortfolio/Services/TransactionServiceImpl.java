@@ -1,10 +1,10 @@
-package MyPortfolio.Service;
+package MyPortfolio.Services;
 
-import MyPortfolio.Entity.Portfolio;
-import MyPortfolio.Entity.Transaction;
-import MyPortfolio.Repository.PortfolioRepository;
-import MyPortfolio.Repository.TransactionRepository;
-import MyPortfolio.Service.Impl.TransactionService;
+import MyPortfolio.Entities.Portfolio;
+import MyPortfolio.Entities.Transaction;
+import MyPortfolio.Repositories.PortfolioRepository;
+import MyPortfolio.Repositories.TransactionRepository;
+import MyPortfolio.Services.Impl.TransactionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

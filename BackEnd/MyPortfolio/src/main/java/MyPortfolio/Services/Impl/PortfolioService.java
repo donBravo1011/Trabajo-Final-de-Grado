@@ -1,7 +1,6 @@
-package MyPortfolio.Service.Impl;
+package MyPortfolio.Services.Impl;
 
-import MyPortfolio.Entity.Portfolio;
-import MyPortfolio.Entity.User;
+import MyPortfolio.Entities.Portfolio;
 
 import java.util.List;
 

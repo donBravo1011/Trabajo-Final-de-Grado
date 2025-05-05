@@ -1,6 +1,6 @@
-package MyPortfolio.Controller;
+package MyPortfolio.Controllers;
 
-import MyPortfolio.Service.OllamaService;
+import MyPortfolio.Services.OllamaService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 

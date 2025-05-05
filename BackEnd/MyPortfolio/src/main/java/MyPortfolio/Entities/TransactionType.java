@@ -1,4 +1,4 @@
-package MyPortfolio.Entity;
+package MyPortfolio.Entities;
 
 public enum TransactionType {
     COMPRA, VENTA

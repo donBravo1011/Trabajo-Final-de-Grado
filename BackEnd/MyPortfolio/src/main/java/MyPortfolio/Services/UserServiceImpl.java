@@ -1,8 +1,11 @@
-package MyPortfolio.Service;
+package MyPortfolio.Services;
 
-import MyPortfolio.Entity.User;
-import MyPortfolio.Repository.UserRepository;
-import MyPortfolio.Service.Impl.UserService;
+import MyPortfolio.Entities.User;
+import MyPortfolio.Exceptions.ResourceNotFoundException;
+import MyPortfolio.Repositories.UserRepository;
+import MyPortfolio.Services.Impl.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,7 +38,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(Long id) {
-        return userRepository.findById(id).get();
+        return userRepository.findById(id).orElseThrow(
+                () -> {
+                    throw new ResourceNotFoundException();
+                }
+        );
     }
 
     @Override

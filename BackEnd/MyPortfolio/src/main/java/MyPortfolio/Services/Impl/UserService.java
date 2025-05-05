@@ -1,8 +1,7 @@
-package MyPortfolio.Service.Impl;
+package MyPortfolio.Services.Impl;
 
-import MyPortfolio.Entity.User;
-
-import java.util.Optional;
+import MyPortfolio.Entities.User;
+import org.springframework.http.ResponseEntity;
 
 public interface UserService {
     public User register(User user);
