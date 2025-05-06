@@ -4,8 +4,6 @@ import MyPortfolio.Entities.User;
 import MyPortfolio.Exceptions.ResourceNotFoundException;
 import MyPortfolio.Repositories.UserRepository;
 import MyPortfolio.Services.Impl.UserService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,12 +36,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(Long id) {
-        return userRepository.findById(id).orElseThrow(
-                () -> {
-                    throw new ResourceNotFoundException();
-                }
-        );
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario con ID " + id + " no encontrado"));
     }
+
 
     @Override
     public User update(User user) {
@@ -63,8 +59,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new ResourceNotFoundException("Usuario con email " + email + " no encontrado");
+        }
+        return user;
     }
+
+
 
     @Override
     public User updateName(String name, Long id){

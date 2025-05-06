@@ -2,6 +2,7 @@ package MyPortfolio.Services;
 
 import MyPortfolio.Entities.Portfolio;
 import MyPortfolio.Entities.Transaction;
+import MyPortfolio.Exceptions.ResourceNotFoundException;
 import MyPortfolio.Repositories.PortfolioRepository;
 import MyPortfolio.Repositories.TransactionRepository;
 import MyPortfolio.Services.Impl.TransactionService;
@@ -28,8 +29,10 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Transaction getTransactionById(Long id) {
-        return transactionRepository.findById(id).get();
+        return transactionRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Transacción con ID " + id + " no encontrada"));
     }
+
 
     @Override
     public Transaction updateTransaction(Transaction transaction) {
@@ -53,10 +56,12 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public List<Transaction> getTransactionsByPortfolio(Long portfolioId) {
-        Portfolio portfolio = portfolioRepository.findById(portfolioId).get();
+        Portfolio portfolio = portfolioRepository.findById(portfolioId)
+                .orElseThrow(() -> new ResourceNotFoundException("Portfolio con ID " + portfolioId + " no encontrado"));
 
         return portfolio.getTransactions();
     }
+
 
 
 //    public AssetInfo getRealTimeAssetInfo(String assetId) {

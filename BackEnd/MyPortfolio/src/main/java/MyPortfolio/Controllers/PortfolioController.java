@@ -1,8 +1,11 @@
 package MyPortfolio.Controllers;
 
 import MyPortfolio.Entities.Portfolio;
+import MyPortfolio.Exceptions.ResourceNotFoundException;
 import MyPortfolio.Services.Impl.PortfolioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,13 +27,24 @@ public class PortfolioController {
     }
 
     @GetMapping("/user/{id}")
-    public List<Portfolio> getPortfoliosByUser(@PathVariable Long id){
-        return portfolioService.getPortfoliosByUser(id);
+    public ResponseEntity<?> getPortfoliosByUser(@PathVariable Long id) {
+        try {
+            List<Portfolio> portfolios = portfolioService.getPortfoliosByUser(id);
+            return ResponseEntity.ok(portfolios);  // Si el usuario existe y se encuentran los portfolios, retornamos 200 OK con la lista
+        } catch (ResourceNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());  // Si no se encuentra el usuario, retornamos 404 Not Found con el mensaje de error
+        }
     }
 
+
     @GetMapping("/{id}")
-    public Portfolio getPortfolioById(@PathVariable Long id){
-        return portfolioService.getById(id);
+    public ResponseEntity<?> getPortfolioById(@PathVariable Long id) {
+        try {
+            Portfolio portfolio = portfolioService.getById(id);
+            return ResponseEntity.ok(portfolio);  // Si el Portfolio se encuentra, devolvemos 200 OK con el objeto
+        } catch (ResourceNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());  // Si no se encuentra, devolvemos 404 con el mensaje de error
+        }
     }
 
     @PutMapping
@@ -45,8 +59,13 @@ public class PortfolioController {
     }
 
     @GetMapping("/email/{email}")
-    public List<Portfolio> getPortfolioByEmail(@PathVariable String email) {
-        return portfolioService.findByUserEmail(email);
+    public ResponseEntity<?> getPortfolioByEmail(@PathVariable String email) {
+        try {
+            List<Portfolio> portfolios = portfolioService.findByUserEmail(email);
+            return ResponseEntity.ok(portfolios);  // Si se encuentran los portfolios, devolvemos 200 OK con la lista
+        } catch (ResourceNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());  // Si no se encuentran, devolvemos 404 Not Found con el mensaje de error
+        }
     }
 
     @PatchMapping("/{id}")

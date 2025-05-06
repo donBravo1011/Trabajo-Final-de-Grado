@@ -3,6 +3,7 @@ package MyPortfolio.Controllers;
 import MyPortfolio.Entities.User;
 import MyPortfolio.Services.Impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,10 +30,14 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public User get(@PathVariable Long id){
-        return userService.getById(id);
+    public ResponseEntity<?> get(@PathVariable Long id) {
+        try {
+            User user = userService.getById(id);
+            return ResponseEntity.ok(user);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
     }
-
     @PutMapping
     public User update(@RequestBody User user){
         return userService.update(user);
@@ -44,12 +49,13 @@ public class UserController {
     }
 
     @GetMapping("/email/{email}")
-    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
-        User user = userService.getUserByEmail(email);
-
-
-            return ResponseEntity.ok().body(user); // Retorna el usuario si se encuentra
-
+    public ResponseEntity<?> getUserByEmail(@PathVariable String email) {
+        try {
+            User user = userService.getUserByEmail(email);
+            return ResponseEntity.ok(user);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
     }
 
     @PatchMapping("/updateName/{id}")
